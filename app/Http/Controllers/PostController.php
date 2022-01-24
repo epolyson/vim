@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Post;
+use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 
 class PostController extends Controller
 {
     public function index(Post $post)
     {
-        return $post->get();
+        $posts = $post->getPaginateByLimit();
+        return view('posts/index',compact("posts"));
     }
 }
+?>
