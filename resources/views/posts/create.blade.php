@@ -9,16 +9,19 @@
     <body>
         <h1>ブログ投稿作成画面</h1>
         <div class='creates'>
-            <div class = 'title_create'>
-                <p>タイトル（一行テキストボックス・必須）</p>
-                <input type='text' required></input>
-            </div>
-            <div class='body_create'>
-                <p>本文（テキストエリア・必須）</p>
-                <textarea required></textarea>
-            </div>
+            <form action='/posts' method='POST'>
+                @csrf
+                <div class = 'title_create'>
+                    <p>タイトル（一行テキストボックス・必須）</p>
+                    <input type='text' name='post[title]' required></input>
+                </div>
+                <div class='body_create'>
+                    <p>本文（テキストエリア・必須）</p>
+                    <textarea name='post[body]' required></textarea>
+                </div>
+                <button type='submit'>送信</button>
+            </form>
         </div>
-        <button>保存</button>
         <br>
         <a href="/">戻る</a>
     </body>
