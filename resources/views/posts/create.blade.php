@@ -13,11 +13,17 @@
                 @csrf
                 <div class = 'title_create'>
                     <p>タイトル（一行テキストボックス・必須）</p>
-                    <input type='text' name='post[title]' required></input>
+                    <input type='text' name='post[title]' value='{{old('post.title')}}'></input><br>
+                    @error('post.title')
+                        <p class='title_error' style='color:red'>{{$message}}</p>
+                    @enderror
                 </div>
                 <div class='body_create'>
                     <p>本文（テキストエリア・必須）</p>
-                    <textarea name='post[body]' required></textarea>
+                    <textarea name='post[body]'>{{old('post.body')}}</textarea>
+                    @error('post.body')
+                        <p class='title_error' style='color:red'>{{$message}}</p>
+                    @enderror
                 </div>
                 <button type='submit'>送信</button>
             </form>
