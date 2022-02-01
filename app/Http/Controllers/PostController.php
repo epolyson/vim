@@ -28,15 +28,22 @@ class PostController extends Controller
     public function store(PostRequest $request, Post $post)
     {
         $input = $request['post'];
-        //dd($input);
         $post->fill($input)->save();
         return redirect('/posts/' . $post->id);
     }
     
-    public function edit($id)
+    public function edit(Post $post)
     {
-        $post = Post::findOrFail($id);
+        //dd($post);
         return view('posts/edit')->with(["post"=>$post]);
+    }
+    
+    public function update(PostRequest $request, Post $post)
+    {
+        $input = $request['post'];
+        //dd($input);
+        $post->fill($input)->save();
+        return redirect('/posts/' . $post->id);
     }
 }
 ?>
