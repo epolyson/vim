@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>Blog</title>
         <!-- Fonts -->
-        <link href="https:fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
         <h1>投稿一覧</h1>
@@ -15,27 +15,10 @@
                         <a href = "/posts/{{$post->id}}">{{$post->title}}</a>
                     </h2>
                     <p class = 'body'>{{$post->body}}</p>
-                    <a href = '/posts/{{$post->id}}/edit'>edit</a>
-                    <form onsubmit='return check()' action='/posts/{{$post->id}}' id='form_{{$post->id}}' method='post' style='display:inline' >
-                        @csrf
-                        @method('DELETE')
-                        <button type='submit'>delete</button>
-                    </form>
-                    <script>
-                        function check()
-                        {
-                            if(window.confirm('本当に削除しますか？')){
-                                return true;
-                            }
-                            else{
-                                return false;
-                            }
-                        }
-                    </script>
+                    <p class = 'edit'>[<a href = '/posts/{{$post->id}}/edit'>edit</a>]</p>
                 </div>
             @endforeach
         </div>
-        <br><br>
         <a href='/posts/create'>create</a>
         <br>
         <div class = "paginate">

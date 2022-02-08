@@ -17,7 +17,6 @@ class PostController extends Controller
     
     public function show(Post $post)
     {
-        dd($post);
         return view('posts/show')->with(["post"=>$post]);
     }
     
@@ -45,15 +44,6 @@ class PostController extends Controller
         //dd($input);
         $post->fill($input)->save();
         return redirect('/posts/' . $post->id);
-    }
-    
-    public function delete(Post $post)
-    {
-        // 論理削除
-        $post->delete();
-        
-        // リダイレクト
-        return redirect('/');
     }
 }
 ?>
